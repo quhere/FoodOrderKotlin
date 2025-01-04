@@ -1,6 +1,7 @@
 package com.pro.foodorder.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -74,6 +75,8 @@ class SignUpActivity : BaseActivity() {
                     } else {
                         Toast.makeText(this@SignUpActivity, getString(R.string.msg_sign_up_error),
                                 Toast.LENGTH_SHORT).show()
+                        val errorMessage = task.exception?.localizedMessage ?: getString(R.string.msg_sign_up_error)
+                        Log.e("SignUpError", "Error signing up user: ${task.exception}", task.exception)
                     }
                 }
     }
